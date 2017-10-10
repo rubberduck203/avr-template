@@ -5,6 +5,8 @@ This project is a bare bones directory structure and makefiles for working with 
 It's designed to work with the [rubberduck/avr docker image][avr-docker], but should work on any *nix (or Mac) system, given you've installed avr-gcc, CppUTest, and pkg-config.
 I've not tested on Windows, but I suspect a little bit of work would need to be done in order to make everything work correctly for that OS. (Pull Requests welcome!)
 
+As of now, the makefiles only support C for the AVR code, but I'd like to add full support for C++ in the future. 
+
 [avr-gcc]: http://www.atmel.com/webdoc/avrlibcreferencemanual/overview_1overview_gcc.html
 [cpputest]: http://cpputest.github.io/
 [avr-docker]: https://hub.docker.com/r/rubberduck/avr/
