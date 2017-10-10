@@ -1,5 +1,4 @@
-all: demo
-demo: check avr
+all: check avr
 
 avr:
 	$(MAKE) -C src
