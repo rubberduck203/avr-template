@@ -54,6 +54,16 @@ Running `make` will build and run the tests, then, if successful, compile, link,
 - upload: Use avrdude to upload the hex to the microcontroller
 - install: standard target alias for upload
 
+## Mocks
+
+Mocks are stored in the `test/mocks` directory and made available as system includes in the test builds.
+This allows you to reference `<avr/io.h>` and `<util/delay.h>` in your code under test without referencing the real AVR include files, which is problematic as the avr-asm has some instructions that are unavailable to the regular gcc compiler.
+
+The `PORT_t` definition in `<avr/io.h>` should be updated according to your particular target device.
+The real headers for these are available in the avr-gcc installation directory under `avr/include/avr`.
+
+More mocks may be added in this directory as needed. The test makefile will automatically put them on the path as system (angle bracket) includes.
+
 ## License
 
 The template and makefiles are licensed under the [MIT License](LICENSE) so you're free to include the template in your own projects. The MIT License is used in order to limit the licensing restrictions that other licenses would impose on your project. I want you to be free to use this in your own work without worrying about the implications of viral licenses. Just give credit where credit is due and pay it forward.

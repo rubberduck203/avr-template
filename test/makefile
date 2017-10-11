@@ -25,6 +25,8 @@ CXXFLAGS += -include CppUTest/MemoryLeakDetectorNewMacros.h
 CFLAGS += -include CppUTest/MemoryLeakDetectorMallocMacros.h
 LD_LIBRARIES = $(shell pkg-config --libs cpputest)
 
+CPPFLAGS += -Imocks
+
 OBJ = obj
 BIN = bin
 SRC = ../src
@@ -38,12 +40,12 @@ all: check
 ### Compile code under test
 $(OBJ)/%.o: $(SRC)/%.c
 	@mkdir -p $(OBJ)
-	gcc -Wall -c $(CFLAGS) $^ -o $@
+	gcc -Wall -c $(CFLAGS) $(CPPFLAGS) $^ -o $@
 
 ### Create test runner executable
 $(BIN)/AllTests: $(objects) $(testSource)
 	@mkdir -p $(BIN)
-	g++ -Wall $(CPPFLAGS) $^ -o $@ $(LD_LIBRARIES)
+	g++ -Wall $(CXXFLAGS) $(CPPFLAGS) $^ -o $@ $(LD_LIBRARIES)
 
 .PHONY: check
 check: $(BIN)/AllTests
