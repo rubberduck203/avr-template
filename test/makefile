@@ -33,7 +33,8 @@ SRC = ../src
 
 # Build the test executable
 testSource := $(wildcard *.cpp)
-objects := $(OBJ)/LedDriver.o
+# Include all the source from src, except the entry point
+objects := $(patsubst $(SRC)/%.c,$(OBJ)/%.o, $(filter-out $(SRC)/Demo.c, $(wildcard $(SRC)/*.c)))
 
 all: check
 

@@ -32,10 +32,13 @@ DEVICE = atxmega128a1
 F_CPU = 32000000UL
 ```
 
-And in `test/makefile` modify this line to create the list of objects under test.
+The file that holds `main` in the `src` directory must be excluded from the test build,
+or you'll get an error about having multiple mains defined.
+If you change the name of `Demo.c` you must update this line in `test/makefile` accordingly.
 
 ```bash
-objects := $(OBJ)/LedDriver.o
+# Include all the source from src, except the entry point
+objects := $(patsubst $(SRC)/%.c,$(OBJ)/%.o, $(filter-out $(SRC)/Demo.c, $(wildcard $(SRC)/*.c)))
 ```
 
 Running `make` will build and run the tests, then, if successful, compile, link, and generate the *.hex file for your avr device.
