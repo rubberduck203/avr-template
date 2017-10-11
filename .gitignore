@@ -1,0 +1,7 @@
+# Mac stuff
+*.swp
+.DS_Store
+
+# build
+bin/
+obj/
