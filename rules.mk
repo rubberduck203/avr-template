@@ -8,3 +8,7 @@ $(OBJ)/%.o: $(SRC)/%.c
 $(OBJ)/%.o: $(SRC)/%.cpp
 	@mkdir -p $(OBJ)
 	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $^ -o $@
+
+.PHONY: clean
+clean:
+	$(RM) $(BIN)/* $(OBJ)/*

@@ -42,7 +42,7 @@ SRC = ./
 all: $(PROGNAME)
 $(PROGNAME): $(BIN)/$(PROGNAME).hex size
 
-include ../objects.mk
+include ../rules.mk
 
 # hex <- elf
 $(BIN)/%.hex: $(BIN)/%.elf
@@ -60,10 +60,6 @@ $(BIN)/%.elf: $(objects)
 .PHONY: size
 size:
 	avr-size --format=avr --mcu=$(DEVICE) $(BIN)/$(PROGNAME).elf
-
-.PHONY: clean
-clean:
-	$(RM) $(BIN)/* $(OBJ)/*
 
 ### Make predefined variable cheatsheet
 # $^ - all prereqs

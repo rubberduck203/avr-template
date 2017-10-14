@@ -45,7 +45,7 @@ objects := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(objects))
 all: check
 
 ### Compile code under test
-include ../objects.mk
+include ../rules.mk
 
 ### Create test runner executable
 $(BIN)/AllTests: $(objects) $(testSource)
@@ -56,9 +56,7 @@ $(BIN)/AllTests: $(objects) $(testSource)
 check: $(BIN)/AllTests
 	$< -c -v 
 
-.PHONY: clean
-clean:
-	$(RM) $(BIN)/* $(OBJ)/*
+
 
 ### Make predefined variable cheatsheet
 # $^ - all prereqs
