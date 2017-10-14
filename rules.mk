@@ -1,3 +1,7 @@
+#specify defaults so we don't try to clean the root directory fo the sytem
+BIN ?= bin
+OBJ ?= obj
+
 # obj <- c
 .PRECIOUS: $(OBJ)/%.o
 $(OBJ)/%.o: $(SRC)/%.c

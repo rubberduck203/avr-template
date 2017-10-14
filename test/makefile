@@ -1,6 +1,8 @@
 CC = gcc
 CXX = g++
 SRC = ../src
+OBJ = obj
+BIN = bin
 
 CPPFLAGS += $(shell pkg-config --cflags cpputest)
 CXXFLAGS += -include CppUTest/MemoryLeakDetectorNewMacros.h

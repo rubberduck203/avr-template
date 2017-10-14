@@ -10,6 +10,8 @@ F_CPU = 32000000UL
 CC = avr-gcc
 CXX = avr-g++
 SRC = ./
+OBJ = obj
+BIN = bin
 
 CPPFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=$(F_CPU)
 

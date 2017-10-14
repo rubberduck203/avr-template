@@ -1,7 +1,3 @@
-export
-OBJ = obj
-BIN = bin
-
 all: check avr
 
 avr:
