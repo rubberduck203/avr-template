@@ -38,7 +38,7 @@ If you change the name of `Demo.c` you must update this line in `test/makefile` 
 
 ```bash
 # Include all the source from src, except the entry point
-objects := $(patsubst $(SRC)/%.c,$(OBJ)/%.o, $(filter-out $(SRC)/Demo.c, $(wildcard $(SRC)/*.c)))
+srcFiles := $(filter-out $(SRC)/Demo.c, $(wildcard $(SRC)/*.c*))
 ```
 
 Running `make` will build and run the tests, then, if successful, compile, link, and generate the *.hex file for your avr device.
