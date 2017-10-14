@@ -7,15 +7,11 @@ DEVICE = atxmega128a1
 F_CPU = 32000000UL
 
 ### Shouldn't need to modify below this line ###
-
 CC = avr-gcc
 CXX = avr-g++
+SRC = ./
 
 CPPFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=$(F_CPU)
-
-OBJ = obj
-BIN = bin
-SRC = ./
 
 all: $(PROGNAME)
 $(PROGNAME): $(BIN)/$(PROGNAME).hex size
@@ -38,8 +34,3 @@ $(BIN)/%.elf: $(objects)
 .PHONY: size
 size:
 	avr-size --format=avr --mcu=$(DEVICE) $(BIN)/$(PROGNAME).elf
-
-### Make predefined variable cheatsheet
-# $^ - all prereqs
-# $@ - target
-# $< - first prereq

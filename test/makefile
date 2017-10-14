@@ -1,5 +1,6 @@
 CC = gcc
 CXX = g++
+SRC = ../src
 
 CPPFLAGS += $(shell pkg-config --cflags cpputest)
 CXXFLAGS += -include CppUTest/MemoryLeakDetectorNewMacros.h
@@ -7,10 +8,6 @@ CFLAGS += -include CppUTest/MemoryLeakDetectorMallocMacros.h
 LD_LIBRARIES = $(shell pkg-config --libs cpputest)
 
 CPPFLAGS += -Wall -Imocks
-
-OBJ = obj
-BIN = bin
-SRC = ../src
 
 # Build the test executable
 testSource := $(wildcard *.cpp)
@@ -32,11 +29,4 @@ $(BIN)/AllTests: $(objects) $(testSource)
 
 .PHONY: check
 check: $(BIN)/AllTests
-	$< -c -v 
-
-
-
-### Make predefined variable cheatsheet
-# $^ - all prereqs
-# $@ - target
-# $< - first prereq
+	$< -c -v

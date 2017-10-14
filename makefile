@@ -1,4 +1,7 @@
-# MIT License
+export
+OBJ = obj
+BIN = bin
+
 all: check avr
 
 avr:
@@ -16,6 +19,3 @@ check:
 clean:
 	$(MAKE) -C src $@
 	$(MAKE) -C test $@
-
-### Make predefined variable cheatsheet
-# $@ - target
