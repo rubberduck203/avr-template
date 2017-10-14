@@ -30,10 +30,14 @@ F_CPU = 32000000UL
 
 ### Shouldn't need to modify below this line ###
 
-CFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=$(F_CPU)
+CC = avr-gcc
+CXX = avr-g++
+
+CPPFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=$(F_CPU)
 
 OBJ = obj
 BIN = bin
+SRC = ./
 
 all: $(PROGNAME)
 $(PROGNAME): $(BIN)/$(PROGNAME).hex size
@@ -49,18 +53,18 @@ objects := $(patsubst %.cpp, $(OBJ)/%.o, $(objects))
 
 $(BIN)/%.elf: $(objects)
 	@mkdir -p $(BIN)
-	avr-gcc $(CFLAGS) $^ -o $@
+	$(CC) $(CPPFLAGS) $^ -o $@
 
 # obj <- c
 .PRECIOUS: $(OBJ)/%.o
-$(OBJ)/%.o: %.c
+$(OBJ)/%.o: $(SRC)/%.c
 	@mkdir -p $(OBJ)
-	avr-gcc -c $(CFLAGS) $^ -o $@
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $^ -o $@
 
 # obj <- cpp
-$(OBJ)/%.o: %.cpp
+$(OBJ)/%.o: $(SRC)/%.cpp
 	@mkdir -p $(OBJ)
-	avr-g++ -c $(CFLAGS) $^ -o $@
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $^ -o $@
 
 .PHONY: size
 size:
