@@ -1,0 +1,1 @@
+int qux(void) {return 0;}
