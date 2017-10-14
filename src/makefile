@@ -23,10 +23,10 @@ $(BIN)/%.hex: $(BIN)/%.elf
 	avr-objcopy -j .text -j .data -O ihex $^ $@
 
 # elf <- [obj]
-.PRECIOUS: $(BIN)/%.elf
 objects := $(patsubst %.c,$(OBJ)/%.o,$(wildcard *.c*))
 objects := $(patsubst %.cpp, $(OBJ)/%.o, $(objects))
 
+.PRECIOUS: $(BIN)/%.elf
 $(BIN)/%.elf: $(objects)
 	@mkdir -p $(BIN)
 	$(CC) $(CPPFLAGS) $^ -o $@
