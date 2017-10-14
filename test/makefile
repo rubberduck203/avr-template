@@ -45,14 +45,7 @@ objects := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(objects))
 all: check
 
 ### Compile code under test
-$(OBJ)/%.o: $(SRC)/%.c
-	@mkdir -p $(OBJ)
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $^ -o $@
-
-### Compile code under test
-$(OBJ)/%.o: $(SRC)/%.cpp
-	@mkdir -p $(OBJ)
-	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $^ -o $@
+include ../objects.mk
 
 ### Create test runner executable
 $(BIN)/AllTests: $(objects) $(testSource)

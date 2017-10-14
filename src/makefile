@@ -42,6 +42,8 @@ SRC = ./
 all: $(PROGNAME)
 $(PROGNAME): $(BIN)/$(PROGNAME).hex size
 
+include ../objects.mk
+
 # hex <- elf
 $(BIN)/%.hex: $(BIN)/%.elf
 	avr-objcopy -j .text -j .data -O ihex $^ $@
@@ -54,17 +56,6 @@ objects := $(patsubst %.cpp, $(OBJ)/%.o, $(objects))
 $(BIN)/%.elf: $(objects)
 	@mkdir -p $(BIN)
 	$(CC) $(CPPFLAGS) $^ -o $@
-
-# obj <- c
-.PRECIOUS: $(OBJ)/%.o
-$(OBJ)/%.o: $(SRC)/%.c
-	@mkdir -p $(OBJ)
-	$(CC) -c $(CFLAGS) $(CPPFLAGS) $^ -o $@
-
-# obj <- cpp
-$(OBJ)/%.o: $(SRC)/%.cpp
-	@mkdir -p $(OBJ)
-	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $^ -o $@
 
 .PHONY: size
 size:
