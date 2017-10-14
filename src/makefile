@@ -44,7 +44,9 @@ $(BIN)/%.hex: $(BIN)/%.elf
 
 # elf <- [obj]
 .PRECIOUS: $(BIN)/%.elf
-objects := $(patsubst %.c,$(OBJ)/%.o,$(wildcard *.c))
+objects := $(patsubst %.c,$(OBJ)/%.o,$(wildcard *.c*))
+objects := $(patsubst %.cpp, $(OBJ)/%.o, $(objects))
+
 $(BIN)/%.elf: $(objects)
 	@mkdir -p $(BIN)
 	avr-gcc $(CFLAGS) $^ -o $@
@@ -54,6 +56,11 @@ $(BIN)/%.elf: $(objects)
 $(OBJ)/%.o: %.c
 	@mkdir -p $(OBJ)
 	avr-gcc -c $(CFLAGS) $^ -o $@
+
+# obj <- cpp
+$(OBJ)/%.o: %.cpp
+	@mkdir -p $(OBJ)
+	avr-g++ -c $(CFLAGS) $^ -o $@
 
 .PHONY: size
 size:
