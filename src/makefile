@@ -2,7 +2,7 @@
 PROGNAME = demo
 # Valid avr-gcc device from this list: 
 # http://www.atmel.com/webdoc/avrlibcreferencemanual/index_1supp_devices.html
-DEVICE = atxmega128a1
+DEVICE = atmega328
 # Processor speed (check your datasheet)
 F_CPU = 32000000UL
 
