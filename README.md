@@ -51,11 +51,7 @@ Running `make` will build and run the tests, then, if successful, compile, link,
 - size: Display the AVR Memory Usage
 - check: Run tests
 - clean: Delete all files in all `bin` and `obj` directories
-
-### Targets I'd Like to Support, but Don't Yet
-
-- upload: Use avrdude to upload the hex to the microcontroller
-- install: standard target alias for upload
+- install: Use AVRDUDE to upload your program to the device
 
 ## Mocks
 
