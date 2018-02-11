@@ -15,7 +15,7 @@ CPPFLAGS += -Wall -Imocks
 testSource := $(wildcard *.cpp)
 
 # Include all the source from src, except the entry point
-srcFiles := $(filter-out $(SRC)/Demo.c, $(wildcard $(SRC)/*.c*))
+srcFiles := $(filter-out $(SRC)/Demo.cpp, $(wildcard $(SRC)/*.c*))
 objects := $(patsubst $(SRC)/%.c,$(OBJ)/%.o, $(srcFiles))
 objects := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(objects))
 
