@@ -63,6 +63,15 @@ The real headers for these are available in the avr-gcc installation directory u
 
 More mocks may be added in this directory as needed. The test makefile will automatically put them on the path as system (angle bracket) includes.
 
+## Docker-Compose
+
+There's a docker-compose file in the root of this directory that points to an [AVR toolchain docker image](https://hub.docker.com/r/rubberduck/avr).
+To use it, run this command.
+
+```bash
+docker-compose run --rm buildtools
+```
+
 ## License
 
 The template and makefiles are licensed under the [MIT License](LICENSE) so you're free to include the template in your own projects. The MIT License is used in order to limit the licensing restrictions that other licenses would impose on your project. I want you to be free to use this in your own work without worrying about the implications of viral licenses. Just give credit where credit is due and pay it forward.

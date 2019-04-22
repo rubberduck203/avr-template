@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+    buildtools:
+        image: rubberduck/avr
+        devices:
+            - /dev/ttyUSB0
+        volumes:
+            - ./:/mount
+        command: bash
+        tty: true
+        stdin_open: true
